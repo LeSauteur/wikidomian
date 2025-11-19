@@ -1,0 +1,248 @@
+/* common-styles.css - общие стили для всех страниц */
+:root {
+    --primary-color: rgb(230, 10, 15);
+    --primary-dark: #c00a0f;
+    --gray-90: rgb(110, 110, 110);
+    --gray-80: rgb(158, 158, 158);
+    --gray-60: rgb(200, 200, 200);
+    --gray-40: rgb(218, 218, 218);
+    --gray-20: rgb(236, 236, 236);
+    --container-width: 1200px;
+    --border-radius: 8px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: var(--gray-90);
+    background-color: white;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Стили шапки */
+.header {
+    background-color: white;
+    border-bottom: 1px solid var(--gray-40);
+    padding: 15px 0;
+    position: relative;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-link {
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.logo-img {
+    width: 180px;
+    height: auto;
+}
+
+.logo-subtitle {
+    font-size: 12px;
+    color: var(--gray-80);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.nav-container {
+    border-top: 1px solid var(--gray-40);
+    padding-top: 15px;
+}
+
+.main-nav {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-item {
+    position: relative;
+    cursor: pointer;
+    padding: 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gray-90);
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    color: var(--primary-color);
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(230, 10, 15, 0.3);
+}
+
+.btn.secondary {
+    background: #0088cc;
+}
+
+.btn.secondary:hover {
+    background: #0077b3;
+    box-shadow: 0 4px 8px rgba(0, 136, 204, 0.3);
+}
+
+/* Стили подвала */
+footer {
+    background: white;
+    color: var(--gray-90);
+    padding: 50px 0 30px 0;
+    border-top: 1px solid var(--gray-40);
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-title {
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    color: var(--gray-90);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.copyright {
+    font-size: 14px;
+    color: var(--gray-80);
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 30px;
+    border-top: 1px solid var(--gray-40);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+        margin-left: 0;
+    }
+    
+    .main-nav {
+        gap: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .nav-item {
+        font-size: 18px;
+        width: 100%;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+    }
+}
