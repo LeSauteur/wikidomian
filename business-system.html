@@ -3,42 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бизнес-система Правообладателя - Домиан</title>
-    
+    <title>Бизнес-система Правообладателя | Домиан</title>
     <!-- Подключение шрифтов -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- ОБЩИЕ СТИЛИ САЙТА -->
     <style>
-        /* ВСТАВЬТЕ СЮДА ВЕСЬ БОЛЬШОЙ CSS БЛОК ИЗ ПРЕДЫДУЩЕЙ ИНСТРУКЦИИ */
         /* :root переменные для цветов */
         :root {
+            /* Основные цвета */
             --primary-color: rgb(230, 10, 15);
             --primary-dark: #c00a0f;
             --secondary-color: rgb(240, 130, 100);
+            
+            /* Оттенки серого */
             --gray-90: rgb(110, 110, 110);
             --gray-80: rgb(158, 158, 158);
             --gray-60: rgb(200, 200, 200);
             --gray-40: rgb(218, 218, 218);
             --gray-20: rgb(236, 236, 236);
+            
+            /* Черные оттенки с прозрачностью */
             --black-70: rgba(0, 0, 0, 0.7);
             --black-50: rgba(0, 0, 0, 0.5);
             --black-30: rgba(0, 0, 0, 0.3);
             --black-20: rgba(0, 0, 0, 0.2);
             --black-10: rgba(0, 0, 0, 0.1);
+            
+            /* Общие переменные */
             --container-width: 1200px;
             --border-radius: 8px;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
         }
         
+        /* Сброс стилей */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        /* Общие стили */
         body {
             font-family: 'Open Sans', Arial, sans-serif;
             color: var(--gray-90);
@@ -53,7 +58,11 @@
             padding: 0 20px;
         }
         
-        /* СТИЛИ ШАПКИ И ПОДВАЛА */
+        img {
+            max-width: 100%;
+        }
+        
+        /* Шапка сайта */
         .header {
             background-color: white;
             border-bottom: 1px solid var(--gray-40);
@@ -103,65 +112,6 @@
             color: var(--gray-80);
             font-weight: 600;
             letter-spacing: 0.5px;
-        }
-        
-        .contacts {
-            text-align: right;
-        }
-        
-        .phone {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 5px;
-            transition: var(--transition);
-        }
-        
-        .phone:hover {
-            color: var(--primary-dark);
-        }
-        
-        .email {
-            font-size: 14px;
-            color: var(--gray-80);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .email:hover {
-            color: var(--primary-color);
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            text-align: center;
-        }
-        
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(230, 10, 15, 0.3);
-        }
-        
-        .btn.secondary {
-            background: #0088cc;
-        }
-        
-        .btn.secondary:hover {
-            background: #0077b3;
-            box-shadow: 0 4px 8px rgba(0, 136, 204, 0.3);
         }
         
         .social-links {
@@ -264,38 +214,170 @@
             border-bottom: none;
         }
         
+        /* Полуовальные кнопки */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(230, 10, 15, 0.3);
+        }
+        
+        .btn.secondary {
+            background: #0088cc;
+        }
+        
+        .btn.secondary:hover {
+            background: #0077b3;
+            box-shadow: 0 4px 8px rgba(0, 136, 204, 0.3);
+        }
+        
+        /* Стили конкретно для этой страницы (ваш оригинальный дизайн) */
         .main-content {
             padding: 40px 0;
-            min-height: 60vh;
+        }
+        
+        header.page-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            margin: 0;
+        }
+        
+        main {
+            max-width: 100%;
+            margin: 10px auto;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
         
         .section {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow);
-        }
-        
-        .section-title {
-            color: var(--primary-color);
-            font-size: 28px;
             margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--gray-40);
-            position: relative;
+            padding: 15px;
+            background-color: #eef7ff;
+            border: 1px solid #d3eafb;
+            border-radius: 8px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
         
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 60px;
-            height: 2px;
-            background: var(--primary-color);
+        .section:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        
+        h2 {
+            margin-top: 0;
+            color: #0056b3;
+            font-size: 1.2em;
+        }
+        
+        p {
+            color: #555;
+            font-size: 0.9em;
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        li {
+            font-size: 0.9em;
+            margin-bottom: 4px;
+        }
+        
+        /* Адаптивные стили */
+        @media (min-width: 600px) {
+            main {
+                max-width: 800px;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            p, li {
+                font-size: 1em;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .main-nav {
+                gap: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .nav-item {
+                font-size: 18px;
+                width: 100%;
+            }
+            
+            .has-submenu::after {
+                position: absolute;
+                right: 0;
+            }
+            
+            .submenu {
+                position: static;
+                display: none;
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .submenu.active {
+                display: block;
+                margin-top: 10px;
+                margin-left: 20px;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        /* Подвал сайта */
         footer {
             background: white;
             color: var(--gray-90);
@@ -359,212 +441,6 @@
             margin-top: 30px;
             border-top: 1px solid var(--gray-40);
         }
-        
-        @media (max-width: 992px) {
-            .footer-content {
-                flex-direction: column;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .top-bar {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .contacts {
-                margin: 15px 0;
-            }
-            
-            .social-links {
-                justify-content: center;
-                margin-left: 0;
-            }
-            
-            .main-nav {
-                gap: 15px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .nav-item {
-                font-size: 18px;
-                width: 100%;
-            }
-            
-            .has-submenu::after {
-                position: absolute;
-                right: 0;
-            }
-            
-            .submenu {
-                position: static;
-                display: none;
-                box-shadow: none;
-                border: none;
-                padding: 0;
-                margin: 0;
-            }
-            
-            .submenu.active {
-                display: block;
-                margin-top: 10px;
-                margin-left: 20px;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .logo-img {
-                width: 150px;
-            }
-            
-            .section {
-                padding: 20px;
-            }
-        }
-    </style>
-
-    <!-- ВАШИ ОРИГИНАЛЬНЫЕ СТИЛИ ДЛЯ ЭТОЙ СТРАНИЦЫ -->
-    <style>
-        /* СТИЛИ КОНТЕНТА БИЗНЕС-СИСТЕМЫ - НЕ УДАЛЯТЬ! */
-        .business-system-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .page-header {
-            background-color: #E60A0F;
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-            margin-top: 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(230, 10, 15, 0.3);
-            margin-bottom: 30px;
-        }
-
-        .business-system-content h1 {
-            margin: 0;
-            font-size: 2.2em;
-            font-weight: 700;
-        }
-
-        .business-system-content .intro {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-            text-align: center;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        .business-system-content .section {
-            margin-bottom: 25px;
-            padding: 25px;
-            background-color: white;
-            border: 2px solid #d3eafb;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            background-color: #eef7ff;
-        }
-
-        .business-system-content .section:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            border-color: #E60A0F;
-        }
-
-        .business-system-content .section h2 {
-            margin-top: 0;
-            font-size: 1.6em;
-            color: #0056b3;
-            border-bottom: 2px solid #d3eafb;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-
-        .business-system-content .section h2 a {
-            color: #0056b3;
-            text-decoration: none;
-        }
-
-        .business-system-content .section h2 a:hover {
-            text-decoration: underline;
-        }
-
-        .business-system-content .section p {
-            color: #555;
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-
-        .business-system-content .section h3 {
-            margin-top: 20px;
-            font-size: 1.3em;
-            color: #0056b3;
-            margin-bottom: 10px;
-        }
-
-        .business-system-content .section h3 a {
-            color: #0056b3;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .business-system-content .section h3 a:hover {
-            text-decoration: underline;
-        }
-
-        .business-system-content ul {
-            padding-left: 25px;
-            margin-bottom: 15px;
-        }
-
-        .business-system-content li {
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-
-        .business-system-content .link a {
-            color: #555;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .business-system-content .link a:hover {
-            color: #E60A0F;
-            text-decoration: underline;
-        }
-
-        /* Адаптивные стили для мобильных устройств */
-        @media (min-width: 600px) {
-            .business-system-content {
-                max-width: 800px;
-            }
-            .business-system-content h1 {
-                font-size: 2.5em;
-            }
-            .business-system-content .section h2 {
-                font-size: 1.5em;
-            }
-            .business-system-content p, 
-            .business-system-content li {
-                font-size: 1em;
-            }
-        }
     </style>
 </head>
 <body>
@@ -610,32 +486,140 @@
     <!-- Основной контент -->
     <main class="main-content">
         <div class="container">
-            <div class="business-system-content">
-                <header class="page-header">
-                    <h1>Бизнес-система Правообладателя</h1>
-                </header>
+            <header class="page-header">
+                <h1>Бизнес-система Правообладателя</h1>
+            </header>
 
+            <main>
                 <!-- Основное описание -->
-                <div class="intro">
-                    <p>
-                        Бизнес-система Правообладателя является неотъемлемой частью договора коммерческой концессии. Она содержит подробные правила и регламенты работы компании, а также описание всех процессов, связанных с оплатой труда, мотивацией сотрудников и взаимодействием между ними. Правообладатель оставляет за собой право изменять, дополнять или вносить изменения в приложения/пункты, утратившие силу.
-                    </p>
-                </div>
+                <p>
+                    Бизнес-система Правообладателя является неотъемлемой частью договора коммерческой концессии. Она содержит подробные правила и регламенты работы компании, а также описание всех процессов, связанных с оплатой труда, мотивацией сотрудников и взаимодействием между ними. Правообладатель оставляет за собой право изменять, дополнять или вносить изменения в приложения/пункты, утратившие силу.
+                </p>
 
                 <!-- Приложение 1-4 -->
                 <div class="section">
                     <h2><a href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2Fa7Jr1RaNr9gXWDpu6hEE2oqj%2Brip5HCmHrZnkC%2BBCQqa%2BTWx8hS7vhd4zf7doQTxq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%91%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%9F%D1%80%D0%B0%D0%B2%D0%BE%D0%BE%D0%B1%D0%BB%D0%B0%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F.%2F%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%201-4%20%D0%9F%D0%A0%D0%90%D0%92%D0%98%D0%9B%D0%90%20%D0%9F%D0%A0%D0%98%D0%95%D0%9C%D0%90%20%D0%9D%D0%90%20%D0%A0%D0%90%D0%91%D0%9E%D0%A2%D0%A3%20.%20%D0%A1%D0%98%D0%A1%D0%A2%D0%95%D0%9C%D0%90%20%D0%9E%D0%9F%D0%9B%D0%90%D0%A2%D0%AB%20%D0%A2%D0%A0%D0%A3%D0%94%D0%90%20.%20%D0%A0%D0%90%D0%91%D0%9E%D0%A7%D0%98%D0%95%20%D0%9F%D0%A0%D0%9E%D0%A6%D0%95%D0%A1%D0%A1%D0%AB.docx&name=%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%201-4%20%D0%9F%D0%A0%D0%90%D0%92%D0%98%D0%9B%D0%90%20%D0%9F%D0%A0%D0%98%D0%95%D0%9C%D0%90%20%D0%9D%D0%90%20%D0%A0%D0%90%D0%91%D0%9E%D0%A2%D0%A3%20.%20%D0%A1%D0%98%D0%A1%D0%A2%D0%95%D0%9C%D0%90%20%D0%9E%D0%9F%D0%9B%D0%90%D0%A2%D0%AB%20%D0%A2%D0%A0%D0%A3%D0%94%D0%90%20.%20%D0%A0%D0%90%D0%91%D0%9E%D0%A7%D0%98%D0%95%20%D0%9F%D0%A0%D0%9E%D0%A6%D0%95%D0%A1%D0%A1%D0%AB.docx">ПРИЛОЖЕНИЕ 1-4: Правила приема на работу, система оплаты труда и рабочие процессы</a></h2>
                     <p>Документ регламентирует основные аспекты работы сотрудников в компании:</p>
                     <ul>
-                        <li class="link"><a href="https://sites.google.com/view/wikidomian/%D1%84%D1%80%D0%B0%D0%BD%D1%88%D0%B8%D0%B7%D0%BD%D0%B0%D1%8F-%D0%BF%D0%B0%D0%BF%D0%BA%D0%B0/%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D0%BE%D0%B1%D0%BB%D0%B0%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F">Правила приема на работу</a></li>
-                        <!-- остальной ваш контент... -->
+                        <li><strong>Правила приема на работу:</strong>
+                            <ul>
+                                <li>Прием сотрудников осуществляется с согласия Правообладателя.</li>
+                                <li>Анкета кандидата должна быть отправлена в главный офис не позднее 5 рабочих дней после заполнения.</li>
+                                <li>По результатам собеседования сотрудники направляются на обучение (онлайн или офлайн).</li>
+                                <li>Передача сотрудников между офисами сопровождается выплатой вознаграждения в размере 10%, которое распределяется между передающим и принимающим офисом.</li>
+                                <li>Сотрудник имеет право сменить филиал через 12 месяцев после прекращения действия трудового соглашения или по решению комиссии по этике.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Система оплаты труда:</strong>
+                            <ul>
+                                <li>Все сотрудники начинают как стажеры с оплатой труда в размере 30-40% от вознаграждения клиента.</li>
+                                <li>После проведения трех задатков стажер переводится в статус партнера с оплатой 45-80%.</li>
+                                <li>Партнеры участвуют во всех мотивационных программах компании, включая:
+                                    <ul>
+                                        <li>Акцию "Путешествие с Домиан".</li>
+                                        <li>Акцию "Успешная команда".</li>
+                                        <li>Программу материального вознаграждения по итогам квартала.</li>
+                                        <li>Корпоративные мероприятия (зимний и летний).</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Рабочие процессы:</strong>
+                            <ul>
+                                <li>Филиалы обязаны следовать стандартам и системам Правообладателя.</li>
+                                <li>Контроль качества работы осуществляется сотрудниками центрального офиса.</li>
+                                <li>Задатки назначаются через CRM-систему центрального офиса.</li>
+                                <li>Финансовый учет ведется в специальной таблице или электронной системе Правообладателя.</li>
+                                <li>Коммуникации происходят только через группы, созданные центральным офисом.</li>
+                                <li>При оформлении нового сотрудника необходимо ознакомить его с утвержденными системами мотивации.</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
 
-                <!-- Остальные приложения... -->
-                <!-- ВСТАВЬТЕ СЮДА ВСЕ ОСТАЛЬНЫЕ ПРИЛОЖЕНИЯ ИЗ ВАШЕГО ОРИГИНАЛЬНОГО КОДА -->
+                <!-- Приложение 5-6 -->
+                <div class="section">
+                    <h2><a href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2Fa7Jr1RaNr9gXWDpu6hEE2oqj%2Brip5HCmHrZnkC%2BBCQqa%2BTWx8hS7vhd4zf7doQTxq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%91%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%9F%D1%80%D0%B0%D0%B2%D0%BE%D0%BE%D0%B1%D0%BB%D0%B0%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F.%2F%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%205-6%20%D0%9C%D0%9E%D0%A2%D0%98%D0%92%D0%90%D0%A6%D0%98%D0%9E%D0%9D%D0%9D%D0%AB%D0%95%20%D0%9F%D0%A0%D0%9E%D0%93%D0%A0%D0%90%D0%9C%D0%9C%D0%AB%20.%20%D0%90%D0%9A%D0%A6%D0%98%D0%98%20.%20%D0%9C%D0%90%D0%A2%D0%95%D0%A0%D0%98%D0%90%D0%9B%D0%AC%D0%9D%D0%90%D0%AF%20%D0%9C%D0%9E%D0%A2%D0%98%D0%92%D0%90%D0%A6%D0%98%D0%AF.docx&name=%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%205-6%20%D0%9C%D0%9E%D0%A2%D0%98%D0%92%D0%90%D0%A6%D0%98%D0%9E%D0%9D%D0%9D%D0%AB%D0%95%20%D0%9F%D0%A0%D0%9E%D0%93%D0%A0%D0%90%D0%9C%D0%9C%D0%AB%20.%20%D0%90%D0%9A%D0%A6%D0%98%D0%98%20.%20%D0%9C%D0%90%D0%A2%D0%95%D0%A0%D0%98%D0%90%D0%9B%D0%AC%D0%9D%D0%90%D0%AF%20%D0%9C%D0%9E%D0%A2%D0%98%D0%92%D0%90%D0%A6%D0%98%D0%AF.docx">ПРИЛОЖЕНИЕ 5-6: Мотивационные программы, акции и материальная мотивация</a></h2>
+                    <p>В этом документе описаны все программы мотивации сотрудников:</p>
+                    <ul>
+                        <li>Мотивационные программы</li>
+                        <li>Акции</li>
+                        <li>Материальная мотивация</li>
+                    </ul>
+                </div>
 
-            </div>
+                <!-- Приложение 7-10 -->
+                <div class="section">
+                    <h2><a href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2Fa7Jr1RaNr9gXWDpu6hEE2oqj%2Brip5HCmHrZnkC%2BBCQqa%2BTWx8hS7vhd4zf7doQTxq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%91%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%9F%D1%80%D0%B0%D0%B2%D0%BE%D0%BE%D0%B1%D0%BB%D0%B0%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F.%2F%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%207-10%20%D0%9B%D0%98%D0%A7%D0%9D%D0%AB%D0%95%20%D0%A3%D0%A0%D0%9E%D0%92%D0%9D%D0%98%20.%20%D0%A1%D0%A2%D0%98%D0%9F%D0%95%D0%9D%D0%94%D0%98%D0%98%20.%20%D0%9F%D0%A3%D0%A2%D0%95%D0%A8%D0%95%D0%A1%D0%A2%D0%92%D0%98%D0%95%20%D0%A1%20%D0%94%D0%9E%D0%9C%D0%98%D0%90%D0%9D.docx&name=%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%207-10%20%D0%9B%D0%98%D0%A7%D0%9D%D0%AB%D0%95%20%D0%A3%D0%A0%D0%9E%D0%92%D0%9D%D0%98%20.%20%D0%A1%D0%A2%D0%98%D0%9F%D0%95%D0%9D%D0%94%D0%98%D0%98%20.%20%D0%9F%D0%A3%D0%A2%D0%95%D0%A8%D0%95%D0%A1%D0%A2%D0%92%D0%98%D0%95%20%D0%A1%20%D0%94%D0%9E%D0%9C%D0%98%D0%90%D0%9D.docx&nosw=1">ПРИЛОЖЕНИЕ 7-10: Личные уровни, стипендии и корпоративные путешествия</a></h2>
+                    <p>Информация о личных уровнях сотрудников, системе стипендий и программах корпоративных путешествий:</p>
+                    <ul>
+                        <li>Личные уровни (расчет по сделкам)</li>
+                        <li>Стипендии агентам по результатам квартала</li>
+                        <li>Программа «Путешествие с Домиан»</li>
+                    </ul>
+                </div>
+
+                <!-- Приложение 11-12 -->
+                <div class="section">
+                    <h2><a href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2Fa7Jr1RaNr9gXWDpu6hEE2oqj%2Brip5HCmHrZnkC%2BBCQqa%2BTWx8hS7vhd4zf7doQTxq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%91%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%9F%D1%80%D0%B0%D0%B2%D0%BE%D0%BE%D0%B1%D0%BB%D0%B0%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F.%2F%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%2011%20-%2012%20%D0%A1%D0%98%D0%A1%D0%A2%D0%95%D0%9C%D0%90%20%D0%9C%D0%9E%D0%A2%D0%98%D0%92%D0%90%D0%A6%D0%98%D0%98%20.%20%D0%9D%D0%90%D0%A7%D0%98%D0%A1%D0%9B%D0%95%D0%9D%D0%98%D0%95%20%D0%90%D0%92%D0%98%D0%A2%D0%9E%20.%20%D0%9C%D0%9E%D0%A2%D0%98%D0%92%D0%90%D0%A6%D0%98%D0%9E%D0%9D%D0%9D%D0%AB%D0%95%20%D0%91%D0%9E%D0%9D%D0%A3%D0%A1%D0%AB%20.docx&name=%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%2011%20-%2012%20%D0%A1%D0%98%D0%A1%D0%A2%D0%95%D0%9C%D0%90%20%D0%9C%D0%9E%D0%A2%D0%98%D0%92%D0%90%D0%A6%D0%98%D0%98%20.%20%D0%9D%D0%90%D0%A7%D0%98%D0%A1%D0%9B%D0%95%D0%9D%D0%98%D0%95%20%D0%90%D0%92%D0%98%D0%A2%D0%9E%20.%20%D0%9C%D0%9E%D0%A2%D0%98%D0%92%D0%90%D0%A6%D0%98%D0%9E%D0%9D%D0%9D%D0%AB%D0%95%20%D0%91%D0%9E%D0%9D%D0%A3%D0%A1%D0%AB%20.docx&nosw=1">ПРИЛОЖЕНИЕ 11-12: Система мотивации и дополнительные бонусы</a></h2>
+                    <p>Чек-лист системы мотивации и информация о дополнительных бонусах для сотрудников:</p>
+                    <ul>
+                        <li>Чек-лист «Система мотивации»</li>
+                        <li>Дополнительные бонусы</li>
+                    </ul>
+                </div>
+
+                <!-- Приложение 13 -->
+                <div class="section">
+                    <h2><a href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2Fa7Jr1RaNr9gXWDpu6hEE2oqj%2Brip5HCmHrZnkC%2BBCQqa%2BTWx8hS7vhd4zf7doQTxq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%91%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%9F%D1%80%D0%B0%D0%B2%D0%BE%D0%BE%D0%B1%D0%BB%D0%B0%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F.%2F%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%2013%20%D0%9F%D0%A0%D0%90%D0%92%D0%98%D0%9B%D0%90%20%D0%92%D0%97%D0%90%D0%98%D0%9C%D0%9E%D0%94%D0%95%D0%99%D0%A1%D0%A2%D0%92%D0%98%D0%AF%20%D0%90%D0%93%D0%95%D0%9D%D0%A2%D0%9E%D0%92%20.%20%D0%AD%D0%A2%D0%98%D0%9A%D0%90.docx&name=%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%2013%20%D0%9F%D0%A0%D0%90%D0%92%D0%98%D0%9B%D0%90%20%D0%92%D0%97%D0%90%D0%98%D0%9C%D0%9E%D0%94%D0%95%D0%99%D0%A1%D0%A2%D0%92%D0%98%D0%AF%20%D0%90%D0%93%D0%95%D0%9D%D0%A2%D0%9E%D0%92%20.%20%D0%AD%D0%A2%D0%98%D0%9A%D0%90.docx">ПРИЛОЖЕНИЕ 13: Правила взаимодействия агентов и этика</a></h2>
+                    <p>Регламентирует правила этики и взаимодействия между агентами:</p>
+                    <ul>
+                        <li>Правила взаимодействия агентов</li>
+                        <li>Этика общения</li>
+                    </ul>
+                </div>
+
+                <!-- Приложение 14 -->
+                <div class="section">
+                    <h2><a href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2Fa7Jr1RaNr9gXWDpu6hEE2oqj%2Brip5HCmHrZnkC%2BBCQqa%2BTWx8hS7vhd4zf7doQTxq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%91%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%9F%D1%80%D0%B0%D0%B2%D0%BE%D0%BE%D0%B1%D0%BB%D0%B0%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F.%2F%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%2014%20%D0%9F%D0%A0%D0%90%D0%92%D0%98%D0%9B%D0%90%20%D0%A3%D0%A7%D0%95%D0%A2%D0%90%20%D0%97%D0%90%D0%94%D0%90%D0%A2%D0%9A%D0%90%20%D0%98%20%D0%A0%D0%90%D0%A1%D0%A7%D0%95%D0%A2%D0%90%20%D0%97%D0%90%D0%A0%D0%90%D0%91%D0%9E%D0%A2%D0%9D%D0%AB%D0%A5%20%D0%9F%D0%9B%D0%90%D0%A2.docx&name=%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%2014%20%D0%9F%D0%A0%D0%90%D0%92%D0%98%D0%9B%D0%90%20%D0%A3%D0%A7%D0%95%D0%A2%D0%90%20%D0%97%D0%90%D0%94%D0%90%D0%A2%D0%9A%D0%90%20%D0%98%20%D0%A0%D0%90%D0%A1%D0%A7%D0%95%D0%A2%D0%90%20%D0%97%D0%90%D0%A0%D0%90%D0%91%D0%9E%D0%A2%D0%9D%D0%AB%D0%A5%20%D0%9F%D0%9B%D0%90%D0%A2.docx&nosw=1">ПРИЛОЖЕНИЕ 14: Правила учета задатка и расчета заработных плат</a></h2>
+                    <p>Описывает порядок учета задатков и расчета заработных плат:</p>
+                    <ul>
+                        <li>Учет задатков</li>
+                        <li>Расчет заработной платы</li>
+                    </ul>
+                </div>
+
+                <!-- Приложение 15 -->
+                <div class="section">
+                    <h2><a href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2Fa7Jr1RaNr9gXWDpu6hEE2oqj%2Brip5HCmHrZnkC%2BBCQqa%2BTWx8hS7vhd4zf7doQTxq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%91%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%9F%D1%80%D0%B0%D0%B2%D0%BE%D0%BE%D0%B1%D0%BB%D0%B0%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F.%2F%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%2015%20%D0%A3%D0%A1%D0%9B%D0%9E%D0%92%D0%98%D0%AF%20%D0%9E%D0%A2%D0%9A%D0%A0%D0%AB%D0%A2%D0%98%D0%AF%20%D0%A4%D0%A0%D0%90%D0%9D%D0%A8%D0%98%D0%97%D0%9D%D0%9E%D0%93%D0%9E%20%D0%9E%D0%A4%D0%98%D0%A1%D0%90%20%D0%A1%D0%9E%D0%A2%D0%A0%D0%A3%D0%94%D0%9D%D0%98%D0%9A%D0%9E%D0%9C%20%D0%9F%D0%9E%D0%9B%D0%AC%D0%97%D0%9E%D0%92%D0%90%D0%A2%D0%95%D0%9B%D0%AF.docx&name=%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%2015%20%D0%A3%D0%A1%D0%9B%D0%9E%D0%92%D0%98%D0%AF%20%D0%9E%D0%A2%D0%9A%D0%A0%D0%AB%D0%A2%D0%98%D0%AF%20%D0%A4%D0%A0%D0%90%D0%9D%D0%A8%D0%98%D0%97%D0%9D%D0%9E%D0%93%D0%9E%20%D0%9E%D0%A4%D0%98%D0%A1%D0%90%20%D0%A1%D0%9E%D0%A2%D0%A0%D0%A3%D0%94%D0%9D%D0%98%D0%9A%D0%9E%D0%9C%20%D0%9F%D0%9E%D0%9B%D0%AC%D0%97%D0%9E%D0%92%D0%90%D0%A2%D0%95%D0%9B%D0%AF.docx&nosw=1">ПРИЛОЖЕНИЕ 15: Условия открытия франшизного офиса сотрудником Пользователя</a></h2>
+                    <p>Условия и процедура открытия франшизного офиса сотрудниками компании:</p>
+                    <ul>
+                        <li>Требования к кандидатам</li>
+                        <li>Процесс открытия</li>
+                    </ul>
+                </div>
+
+                <!-- Приложение 16 -->
+                <div class="section">
+                    <h2><a href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2Fa7Jr1RaNr9gXWDpu6hEE2oqj%2Brip5HCmHrZnkC%2BBCQqa%2BTWx8hS7vhd4zf7doQTxq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%91%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%9F%D1%80%D0%B0%D0%B2%D0%BE%D0%BE%D0%B1%D0%BB%D0%B0%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F.%2F%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%2016%20%D0%9F%D0%9E%D0%92%D0%AB%D0%A8%D0%95%D0%9D%D0%98%D0%95%20%D0%AD%D0%A4%D0%A4%D0%95%D0%9A%D0%A2%D0%98%D0%92%D0%9D%D0%9E%D0%A1%D0%A2%D0%98%20%D0%9E%D0%A2%D0%A1%D0%A2%D0%90%D0%AE%D0%A9%D0%98%D0%9C%20%D0%98%20%D0%9D%D0%9E%D0%92%D0%AB%D0%9C%20%D0%A4%D0%A0%D0%90%D0%9D%D0%A8%D0%98%D0%97%D0%9D%D0%AB%D0%9C%20%D0%9E%D0%A4%D0%98%D0%A1%D0%90%D0%9C.docx&name=%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%2016%20%D0%9F%D0%9E%D0%92%D0%AB%D0%A8%D0%95%D0%9D%D0%98%D0%95%20%D0%AD%D0%A4%D0%A4%D0%95%D0%9A%D0%A2%D0%98%D0%92%D0%9D%D0%9E%D0%A1%D0%A2%D0%98%20%D0%9E%D0%A2%D0%A1%D0%A2%D0%90%D0%AE%D0%A9%D0%98%D0%9C%20%D0%98%20%D0%9D%D0%9E%D0%92%D0%AB%D0%9C%20%D0%A4%D0%A0%D0%90%D0%9D%D0%A8%D0%98%D0%97%D0%9D%D0%AB%D0%9C%20%D0%9E%D0%A4%D0%98%D0%A1%D0%90%D0%9C.docx&nosw=1">ПРИЛОЖЕНИЕ 16: Повышение эффективности отстающим и новым франшизным офисам</a></h2>
+                    <p>Рекомендации и программы поддержки для повышения эффективности работы новых и отстающих франшизных офисов:</p>
+                    <ul>
+                        <li>Рекомендации для новых офисов</li>
+                        <li>Программы поддержки</li>
+                    </ul>
+                </div>
+
+                <!-- Приложение 17 -->
+                <div class="section">
+                    <h2><a href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2Fa7Jr1RaNr9gXWDpu6hEE2oqj%2Brip5HCmHrZnkC%2BBCQqa%2BTWx8hS7vhd4zf7doQTxq%2FJ6bpmRyOJonT3VoXnDag%3D%3D%3A%2F%D0%91%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%9F%D1%80%D0%B0%D0%B2%D0%BE%D0%BE%D0%B1%D0%BB%D0%B0%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F.%2F%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%2017%20%D0%9F%D0%95%D0%A0%D0%95%D0%A7%D0%95%D0%9D%D0%AC%20%D0%A3%D0%A1%D0%9B%D0%A3%D0%93%20%D0%9F%D0%A0%D0%95%D0%94%D0%9E%D0%A1%D0%A2%D0%90%D0%92%D0%9B%D0%AF%D0%95%D0%9C%D0%AB%D0%A5%20%D0%9F%D0%9E%D0%9B%D0%AC%D0%97%D0%9E%D0%92%D0%90%D0%A2%D0%95%D0%9B%D0%AE%20%D0%9F%D0%A0%D0%90%D0%92%D0%9E%D0%9E%D0%91%D0%9B%D0%90%D0%94%D0%90%D0%A2%D0%95%D0%9B%D0%95%D0%9C.docx&name=%D0%9F%D0%A0%D0%98%D0%9B%D0%9E%D0%96%D0%95%D0%9D%D0%98%D0%95%2017%20%D0%9F%D0%95%D0%A0%D0%95%D0%A7%D0%95%D0%9D%D0%AC%20%D0%A3%D0%A1%D0%9B%D0%A3%D0%93%20%D0%9F%D0%A0%D0%95%D0%94%D0%9E%D0%A1%D0%A2%D0%90%D0%92%D0%9B%D0%AF%D0%95%D0%9C%D0%AB%D0%A5%20%D0%9F%D0%9E%D0%9B%D0%AC%D0%97%D0%9E%D0%92%D0%90%D0%A2%D0%95%D0%9B%D0%AE%20%D0%9F%D0%A0%D0%90%D0%92%D0%9E%D0%9E%D0%91%D0%9B%D0%90%D0%94%D0%90%D0%A2%D0%95%D0%9B%D0%95%D0%9C.docx&nosw=1">ПРИЛОЖЕНИЕ 17: Перечень услуг, предоставляемых Правообладателем Пользователю</a></h2>
+                    <p>Список услуг, которые Правообладатель предоставляет своим пользователям:</p>
+                    <ul>
+                        <li>Консультационная поддержка</li>
+                        <li>Юридическая помощь</li>
+                        <li>Маркетинговые материалы</li>
+                    </ul>
+                </div>
+            </main>
         </div>
     </main>
 
@@ -710,6 +694,17 @@
                             }
                         }
                     });
+                }
+            });
+            
+            // Выделение активного пункта меню
+            const currentPage = window.location.pathname.split('/').pop();
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(item => {
+                const href = item.getAttribute('href');
+                if (href === currentPage || (href === 'business-system.html' && currentPage === '')) {
+                    item.classList.add('active');
                 }
             });
         });
