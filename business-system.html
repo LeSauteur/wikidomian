@@ -62,7 +62,7 @@
             max-width: 100%;
         }
         
-        /* Шапка сайта */
+       /* Шапка сайта */
         .header {
             background-color: white;
             border-bottom: 1px solid var(--gray-40);
@@ -82,42 +82,109 @@
             background: var(--primary-color);
         }
         
-        .top-bar {
+        /* Верхняя строка с логотипом и цитатами */
+        .top-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 15px;
         }
         
         .logo-section {
             display: flex;
             flex-direction: column;
-        }
-        
-        .logo-link {
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 5px;
+            align-items: flex-start;
         }
         
         .logo-img {
-            width: 180px;
-            height: auto;
+            max-height: 60px;
+            width: auto;
         }
         
         .logo-subtitle {
-            font-size: 12px;
-            color: var(--gray-80);
+            font-size: 14px;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            color: var(--gray-80);
+            margin-top: 5px;
+        }
+        
+        /* Стили для строки с цитатами */
+        .quotes-bar {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(230, 10, 15, 0.3);
+            text-align: center;
+            max-width: 600px;
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+
+        .quote-text {
+            font-size: 16px;
+            font-weight: 600;
+            font-style: italic;
+            opacity: 0;
+            transform: translateY(-10px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        /* Анимация появления цитаты */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Баннер */
+        .header-banner {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .banner-image {
+            max-width: 1200px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+  /* Полуовальные кнопки */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(230, 10, 15, 0.3);
+        }
+        
+        .btn.secondary {
+            background: #0088cc;
+        }
+        
+        .btn.secondary:hover {
+            background: #0077b3;
+            box-shadow: 0 4px 8px rgba(0, 136, 204, 0.3);
         }
         
         .social-links {
             display: flex;
             gap: 10px;
-            margin-left: 20px;
         }
         
         .nav-container {
@@ -214,35 +281,111 @@
             border-bottom: none;
         }
         
-        /* Полуовальные кнопки */
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: var(--primary-color);
+        /* Баннер-ссылка */
+        .banner-link {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
             text-align: center;
+            padding: 25px 0;
+            margin: 20px 0;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(230, 10, 15, 0.3);
+            transition: var(--transition);
         }
         
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(230, 10, 15, 0.3);
+        .banner-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(230, 10, 15, 0.4);
         }
         
-        .btn.secondary {
-            background: #0088cc;
+        /* Информация о франшизном отделе */
+        .franchise-contacts {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin: 20px 0;
+            border-left: 4px solid var(--primary-color);
         }
         
-        .btn.secondary:hover {
-            background: #0077b3;
-            box-shadow: 0 4px 8px rgba(0, 136, 204, 0.3);
+        .franchise-contacts h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        /* Основной контент */
+        .main-content {
+            padding: 40px 0;
+        }
+        
+        /* Подвал сайта */
+        footer {
+            background: white;
+            color: var(--gray-90);
+            padding: 50px 0 30px 0;
+            border-top: 1px solid var(--gray-40);
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 15px;
+        }
+        
+        .footer-title {
+            color: var(--primary-color);
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--gray-90);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: var(--gray-80);
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 30px;
+            border-top: 1px solid var(--gray-40);
         }
         
         /* Стили конкретно для этой страницы (ваш оригинальный дизайн) */
@@ -444,24 +587,29 @@
     </style>
 </head>
 <body>
-    <!-- Шапка сайта -->
+     <!-- Шапка сайта -->
     <header class="header">
         <div class="container">
-            <div class="top-bar">
+            <!-- Верхняя строка с логотипом и цитатами -->
+            <div class="top-row">
                 <div class="logo-section">
                     <a href="index.html" class="logo-link">
                         <img src="https://i.postimg.cc/sQN2Zcy7/logo.png" alt="Домиан" class="logo-img">
                     </a>
                     <div class="logo-subtitle">СЕТЬ АГЕНТСТВ НЕДВИЖИМОСТИ</div>
                 </div>
-                <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 15px;">
-                    <div class="social-links">
-                        <a href="https://vk.com/domian_ru" class="btn secondary">ВКонтакте</a>
-                        <a href="https://t.me/Domian_main" class="btn secondary">Телеграм</a>
-                    </div>
+                
+                <div class="quotes-bar">
+                    <div class="quote-text">Ваш успех определяется вашей настойчивостью</div>
                 </div>
             </div>
             
+            <!-- Баннер -->
+            <div class="header-banner">
+                <img src="https://radika1.link/2025/11/20/SNIMOK-EKRANA-2025-11-19-161849986cf332596f851b.png" alt="Баннер" class="banner-image">
+            </div>
+            
+            <!-- Навигация -->
             <div class="nav-container">
                 <nav class="main-nav">
                     <a href="index.html" class="nav-item">Главная</a>
@@ -469,7 +617,7 @@
                     <div class="nav-item has-submenu active">
                         Франшизная папка
                         <div class="submenu">
-                            <a href="business-system.html" class="submenu-item active">Бизнес-система</a>
+                            <a href="business-system.html" class="submenu-item">Бизнес-система</a>
                             <a href="business-processes.html" class="submenu-item">Бизнес процессы</a>
                             <a href="office-organization.html" class="submenu-item">Организация офиса</a>
                             <a href="agents.html" class="submenu-item">Агенту</a>
@@ -648,7 +796,7 @@
                         <p>При использовании материалов ссылка на источник обязательна.</p>
                     </div>
                 </div>
-
+                </div>
                 <div class="footer-col">
                     <h3 class="footer-title">НАВИГАЦИЯ</h3>
                     <div class="footer-links">
