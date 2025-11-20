@@ -817,6 +817,98 @@
 </style>
 </head>
 <body>
+<!-- ЗАЩИТА ДОСТУПА -->
+<div id="protectionOverlay" class="protection-overlay" style="display:none;">
+    <div class="login-form">
+        <h2>🔒 Доступ к порталу Домиан</h2>
+        <p>Введите пароль для продолжения:</p>
+        <input type="password" id="passwordInput" placeholder="Пароль доступа">
+        <button onclick="checkAccess()">Войти в систему</button>
+        <div class="note">
+            Если у вас нет пароля, обратитесь к руководителю франшизного отдела
+        </div>
+    </div>
+</div>
+
+<script>
+// КОНФИГУРАЦИЯ ДОСТУПА
+const ACCESS_CONFIG = {
+    password: "Domian2024Secure", // ЗАМЕНИТЕ НА СВОЙ ПАРОЛЬ
+    validTokens: ["dm7x9a2b4c8d3e1f5g6h"],
+    sessionDuration: 8 * 60 * 60 * 1000
+};
+
+function checkAccess() {
+    const passwordInput = document.getElementById('passwordInput').value;
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    
+    if (passwordInput === ACCESS_CONFIG.password || 
+        (token && ACCESS_CONFIG.validTokens.includes(token))) {
+        
+        document.getElementById('protectionOverlay').style.display = 'none';
+        
+        const sessionData = {
+            authenticated: true,
+            expiry: Date.now() + ACCESS_CONFIG.sessionDuration
+        };
+        localStorage.setItem('domianAccess', JSON.stringify(sessionData));
+        
+        if (token) {
+            window.history.replaceState({}, '', window.location.pathname);
+        }
+    } else {
+        alert('❌ Неверный пароль доступа');
+    }
+}
+
+function checkExistingSession() {
+    const sessionData = localStorage.getItem('domianAccess');
+    if (sessionData) {
+        const { authenticated, expiry } = JSON.parse(sessionData);
+        if (authenticated && Date.now() < expiry) {
+            document.getElementById('protectionOverlay').style.display = 'none';
+            return true;
+        }
+    }
+    return false;
+}
+
+// При загрузке страницы
+if (!checkExistingSession()) {
+    document.getElementById('protectionOverlay').style.display = 'flex';
+    document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') checkAccess();
+    });
+}
+</script>
+
+<style>
+.protection-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: linear-gradient(135deg, #e60a0f, #c00a0f); 
+    display: flex; justify-content: center; align-items: center; z-index: 9999;
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+.login-form {
+    background: white; padding: 40px; border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; 
+    max-width: 400px; width: 90%;
+}
+.login-form h2 { color: #e60a0f; margin-bottom: 20px; }
+.login-form input { 
+    width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #dadada; 
+    border-radius: 6px; font-size: 16px; box-sizing: border-box; 
+}
+.login-form button { 
+    background: #e60a0f; color: white; border: none; padding: 12px 30px; 
+    border-radius: 25px; cursor: pointer; font-size: 16px; margin-top: 10px; 
+    width: 100%; transition: background 0.3s ease; 
+}
+.login-form button:hover { background: #c00a0f; }
+.note { margin-top: 20px; font-size: 12px; color: #666; }
+</style>
+<!-- КОНЕЦ ЗАЩИТЫ ДОСТУПА -->
     <!-- Шапка сайта -->
     <header class="header">
         <div class="container">
@@ -1594,4 +1686,3 @@
 </body>
 
 </html>
-
