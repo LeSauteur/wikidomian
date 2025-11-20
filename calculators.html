@@ -968,8 +968,9 @@
     </footer>
 
     <script>
-        // Система вкладок
+        // ========== СИСТЕМА ВКЛАДОК ==========
         document.addEventListener('DOMContentLoaded', function() {
+            // Система вкладок
             const tabButtons = document.querySelectorAll('.tab-button');
             const tabContents = document.querySelectorAll('.calculator-content');
             
@@ -1374,4 +1375,192 @@
                         <li>2.1. Наличие офиса или временная аренда на территории Правообладателя</li>
                         <li>2.2. Предоставление выписки с расчётного счета</li>
                         <li>2.3. Оплата труда агентам</li>
-                        <li>
+                        <li>2.4. Оплата стипендии и иных мотиваций, предусмотренных и описанных в Бизнес системе Правообладателя</li>
+                        <li>2.5. Поездки и корпоративные мероприятия обязательны, если агенты выполняют установленный план. Запрещается отказываться от поездок и заменять их на иные мероприятия от лица Пользователя</li>
+                        <li>2.6. Начисление баллов авито строго согласно правил, описанных в приложении «Рекламные возможности агента за счет компании» в том числе для агентов находящихся на территории офисов Правообладателя по договору аренды.</li>
+                        <li>2.7. Строгое соблюдение этики компании</li>
+                    </ul>
+                    <p>3. При своевременной подаче отчетов в установленной форме</p>
+                    <p>4. При своевременной оплате роялти в установленные сроки</p>
+                    <p>5. При отсутствии роста оборота, согласно п. 1, неоднократных нарушениях сроков предоставления отчетов, просрочек по платежам, а также нарушениях стандартов компании ставка остается на прежнем уровне</p>
+                </div>
+            `;
+            
+            // Показываем блок с результатами
+            document.getElementById('plan-result').classList.remove('hidden');
+        }
+
+        function resetPlanForm() {
+            // Сбрасываем все поля ввода
+            document.getElementById('plan').value = '';
+            document.getElementById('planStartDate').value = '';
+            document.getElementById('completed').value = '';
+            document.getElementById('planCurrentDate').value = '';
+            document.getElementById('planEndDate').value = '';
+
+            // Скрываем блок с результатами
+            document.getElementById('plan-result').classList.add('hidden');
+        }
+
+        // ========== КАЛЬКУЛЯТОР АГЕНТСКИХ ВОЗНАГРАЖДЕНИЙ ==========
+        const allowedPercentages = [30, 35, 40, 45, 50, 55, 60, 65, 70, 80, 100];
+        const agents = [];
+
+        // Функция для форматирования чисел с разделением разрядов
+        function formatNumber(num) {
+            // Округляем до целого числа
+            const rounded = Math.round(num);
+            // Форматируем с разделителями разрядов
+            return rounded.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        }
+
+        function createPercentageSelect() {
+            const select = document.createElement('select');
+            allowedPercentages.forEach(perc => {
+                const option = document.createElement('option');
+                option.value = perc;
+                option.textContent = perc;
+                select.appendChild(option);
+            });
+            return select;
+        }
+
+        function addAgent() {
+            if (agents.length >= 6) {
+                alert('Нельзя добавить больше 6 агентов');
+                return;
+            }
+
+            const container = document.getElementById('agentsContainer');
+            const agentDiv = document.createElement('div');
+            agentDiv.className = 'agent-fields';
+
+            const nameInput = document.createElement('input');
+            nameInput.type = 'text';
+            nameInput.placeholder = 'ФИО агента';
+            
+            const dealPercentInput = document.createElement('input');
+            dealPercentInput.type = 'number';
+            dealPercentInput.min = '0';
+            dealPercentInput.max = '100';
+            dealPercentInput.placeholder = 'Процент сделки';
+
+            const salaryPercentSelect = createPercentageSelect();
+            
+            agentDiv.appendChild(nameInput);
+            agentDiv.appendChild(dealPercentInput);
+            agentDiv.appendChild(salaryPercentSelect);
+            
+            container.appendChild(agentDiv);
+            agents.push({nameInput, dealPercentInput, salaryPercentSelect});
+        }
+
+        function calculateReward() {
+            const errorMessage = document.getElementById('reward-error');
+            errorMessage.textContent = '';
+            
+            // Получаем сумму сделки
+            const totalSum = parseFloat(document.getElementById('totalSum').value);
+            if (!totalSum || totalSum <= 0) {
+                errorMessage.textContent = 'Введите корректную сумму сделки';
+                return;
+            }
+
+            // Проверяем количество агентов
+            if (agents.length === 0) {
+                errorMessage.textContent = 'Добавьте хотя бы одного агента';
+                return;
+            }
+
+            // Проверяем проценты сделки
+            let totalDealPercent = 0;
+            const results = [];
+            let totalSalary = 0;
+            
+            for (const agent of agents) {
+                const name = agent.nameInput.value.trim();
+                const dealPercent = parseFloat(agent.dealPercentInput.value);
+                const salaryPercent = parseFloat(agent.salaryPercentSelect.value);
+                
+                if (!name) {
+                    errorMessage.textContent = 'Введите имя для всех агентов';
+                    return;
+                }
+                
+                if (isNaN(dealPercent) || dealPercent < 0 || dealPercent > 100 || !Number.isInteger(dealPercent)) {
+                    errorMessage.textContent = `Некорректный процент сделки для ${name}`;
+                    return;
+                }
+                
+                if (!allowedPercentages.includes(salaryPercent)) {
+                    errorMessage.textContent = `Некорректный процент зарплаты для ${name}`;
+                    return;
+                }
+                
+                totalDealPercent += dealPercent;
+                
+                // Рассчитываем долю и зарплату с округлением до целого числа
+                const share = totalSum * dealPercent / 100;
+                const salary = share * salaryPercent / 100;
+                
+                results.push({
+                    name,
+                    dealPercent,
+                    share, // сохраняем исходное значение для расчетов
+                    salaryPercent,
+                    salary  // сохраняем исходное значение для расчетов
+                });
+
+                totalSalary += salary;
+            }
+            
+            if (totalDealPercent > 100) {
+                errorMessage.textContent = 'Сумма процентов сделки не может превышать 100%';
+                return;
+            }
+
+            // Обновляем таблицу
+            const table = document.getElementById('resultsTable');
+            const tbody = document.getElementById('resultsBody');
+            tbody.innerHTML = '';
+            
+            results.forEach(result => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${result.name}</td>
+                    <td>${result.dealPercent}</td>
+                    <td>${formatNumber(result.share)}</td>
+                    <td>${result.salaryPercent}</td>
+                    <td>${formatNumber(result.salary)}</td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            // Рассчитываем доход руководителя и форматируем
+            const managerIncome = totalSum - totalSalary;
+            document.getElementById('managerIncome').textContent = formatNumber(managerIncome);
+            
+            document.getElementById('reward-result').classList.remove('hidden');
+        }
+
+        function resetRewardForm() {
+            document.getElementById('totalSum').value = '';
+            document.getElementById('agentsContainer').innerHTML = '';
+            document.getElementById('reward-result').classList.add('hidden');
+            document.getElementById('reward-error').textContent = '';
+            agents.length = 0;
+            // Добавляем 3 поля для агентов по умолчанию
+            for(let i = 0; i < 3; i++) {
+                addAgent();
+            }
+        }
+
+        function initRewardCalculator() {
+            // Добавляем 3 поля для агентов по умолчанию
+            for(let i = 0; i < 3; i++) {
+                addAgent();
+            }
+        }
+    </script>
+</body>
+</html>
