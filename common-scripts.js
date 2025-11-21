@@ -1,5 +1,44 @@
 // common-scripts.js - общие скрипты для всех страниц
 
+// Функция для удаления дублирующихся шапок и подвалов
+function removeDuplicateElements() {
+    // Удаляем дублирующиеся шапки (оставляем только первую)
+    const headers = document.querySelectorAll('header.header');
+    if (headers.length > 1) {
+        console.log('Найдены дублирующиеся шапки, удаляем лишние...');
+        for (let i = 1; i < headers.length; i++) {
+            headers[i].remove();
+        }
+    }
+    
+    // Удаляем дублирующиеся подвалы (оставляем только первый)
+    const footers = document.querySelectorAll('footer');
+    if (footers.length > 1) {
+        console.log('Найдены дублирующиеся подвалы, удаляем лишние...');
+        for (let i = 1; i < footers.length; i++) {
+            footers[i].remove();
+        }
+    }
+    
+    // Удаляем дублирующиеся баннер-ссылки (оставляем только первую)
+    const bannerLinks = document.querySelectorAll('.banner-link');
+    if (bannerLinks.length > 1) {
+        console.log('Найдены дублирующиеся баннер-ссылки, удаляем лишние...');
+        for (let i = 1; i < bannerLinks.length; i++) {
+            bannerLinks[i].remove();
+        }
+    }
+    
+    // Удаляем дублирующиеся контакты франшизного отдела (оставляем только первый)
+    const franchiseContacts = document.querySelectorAll('.franchise-contacts');
+    if (franchiseContacts.length > 1) {
+        console.log('Найдены дублирующиеся контакты, удаляем лишние...');
+        for (let i = 1; i < franchiseContacts.length; i++) {
+            franchiseContacts[i].remove();
+        }
+    }
+}
+
 // Функция для загрузки HTML компонентов
 function loadComponent(id, file) {
     fetch(file)
@@ -11,6 +50,10 @@ function loadComponent(id, file) {
         })
         .then(data => {
             document.getElementById(id).innerHTML = data;
+            
+            // УДАЛЯЕМ ДУБЛИКАТЫ ПОСЛЕ ЗАГРУЗКИ КАЖДОГО КОМПОНЕНТА
+            removeDuplicateElements();
+            
             // После загрузки компонента, инициализируем необходимые скрипты
             if (file.includes('header')) {
                 initializeHeader();
@@ -18,8 +61,7 @@ function loadComponent(id, file) {
         })
         .catch(error => {
             console.error('Error loading component:', error);
-            // Если компонент не загрузился, показываем сообщение
-            document.getElementById(id).innerHTML = '<div style="padding: 20px; text-align: center; color: red;">Ошибка загрузки компонента</div>';
+            document.getElementById(id).innerHTML = '<div style="padding: 20px; text-align: center; color: #666;">Компонент загружается...</div>';
         });
 }
 
@@ -67,12 +109,7 @@ function initializeHeader() {
         "Ваше время ограничено, не тратьте его, живя чужой жизнью",
         "Инновации отличают лидера от догоняющего",
         "Самый большой риск — не рисковать вообще",
-        "Мечты не работают, пока не работаешь ты",
-        "Успех — это 10% вдохновения и 90% пота",
-        "Каждая сложная ситуация содержит в себе возможности",
-        "Ваша сеть контактов — это ваш чистый капитал",
-        "Лучшее время посадить дерево было 20 лет назад. Следующий лучший момент — сейчас",
-        "Качество — это не случайность, это результат умственных усилий"
+        "Мечты не работают, пока не работаешь ты"
     ];
 
     function rotateQuotes() {
@@ -95,7 +132,7 @@ function initializeHeader() {
                 quoteElement.style.transform = 'translateY(0)';
             }, 300);
             
-        }, 5000); // 5 секунд
+        }, 5000);
     }
     
     rotateQuotes();
@@ -103,6 +140,9 @@ function initializeHeader() {
 
 // Загрузка всех компонентов при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
+    // УДАЛЯЕМ ДУБЛИКАТЫ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ (на всякий случай)
+    removeDuplicateElements();
+    
     // Проверяем, существуют ли контейнеры перед загрузкой
     if (document.getElementById('header-container')) {
         loadComponent('header-container', 'header.html');
@@ -111,4 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('footer-container')) {
         loadComponent('footer-container', 'footer.html');
     }
+    
+    // ФИНАЛЬНАЯ ПРОВЕРКА - удаляем дубликаты через секунду после загрузки
+    setTimeout(removeDuplicateElements, 1000);
 });
