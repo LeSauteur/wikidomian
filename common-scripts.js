@@ -1,3 +1,80 @@
+// Функция для принудительного применения критических стилей
+function applyCriticalStyles() {
+    // Принудительно применяем стили к логотипу
+    const logos = document.querySelectorAll('.logo-img');
+    logos.forEach(logo => {
+        logo.style.maxHeight = '60px';
+        logo.style.width = 'auto';
+        logo.style.transform = 'none';
+        logo.style.display = 'block';
+    });
+    
+    // Принудительно применяем стили к красной полосе
+    const headers = document.querySelectorAll('.header');
+    headers.forEach(header => {
+        if (header.style) {
+            header.style.position = 'relative';
+        }
+    });
+    
+    // Принудительно применяем структуру top-row
+    const topRows = document.querySelectorAll('.top-row');
+    topRows.forEach(row => {
+        row.style.display = 'flex';
+        row.style.justifyContent = 'space-between';
+        row.style.alignItems = 'center';
+    });
+}
+
+// Обновите функцию loadComponent:
+function loadComponent(id, file) {
+    fetch(file)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById(id).innerHTML = data;
+            
+            // УДАЛЯЕМ ДУБЛИКАТЫ ПОСЛЕ ЗАГРУЗКИ КАЖДОГО КОМПОНЕНТА
+            removeDuplicateElements();
+            
+            // ПРИМЕНЯЕМ КРИТИЧЕСКИЕ СТИЛИ
+            setTimeout(applyCriticalStyles, 100);
+            
+            // После загрузки компонента, инициализируем необходимые скрипты
+            if (file.includes('header')) {
+                initializeHeader();
+            }
+        })
+        .catch(error => {
+            console.error('Error loading component:', error);
+            document.getElementById(id).innerHTML = '<div style="padding: 20px; text-align: center; color: #666;">Компонент загружается...</div>';
+        });
+}
+
+// И в DOMContentLoaded добавьте:
+document.addEventListener('DOMContentLoaded', function() {
+    // УДАЛЯЕМ ДУБЛИКАТЫ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ
+    removeDuplicateElements();
+    
+    // Проверяем, существуют ли контейнеры перед загрузкой
+    if (document.getElementById('header-container')) {
+        loadComponent('header-container', 'header.html');
+    }
+    
+    if (document.getElementById('footer-container')) {
+        loadComponent('footer-container', 'footer.html');
+    }
+    
+    // ФИНАЛЬНАЯ ПРОВЕРКА
+    setTimeout(() => {
+        removeDuplicateElements();
+        applyCriticalStyles();
+    }, 1000);
+});
 // common-scripts.js - общие скрипты для всех страниц
 
 // Функция для удаления дублирующихся шапок и подвалов
