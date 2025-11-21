@@ -63,7 +63,95 @@
             margin-bottom: 20px;
             text-align: center;
         }
+                 /* Шапка сайта */
+        .header {
+            background-color: white;
+            border-bottom: 1px solid var(--gray-40);
+            padding: 15px 0;
+            position: relative;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
         
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        /* Верхняя строка с логотипом и цитатами */
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .logo-img {
+            max-height: 60px;
+            width: auto;
+        }
+        
+        .logo-subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-80);
+            margin-top: 5px;
+        }
+        
+        /* Стили для строки с цитатами */
+        .quotes-bar {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(230, 10, 15, 0.3);
+            text-align: center;
+            max-width: 600px;
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+
+        .quote-text {
+            font-size: 16px;
+            font-weight: 600;
+            font-style: italic;
+            opacity: 0;
+            transform: translateY(-10px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        /* Анимация появления цитаты */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Баннер */
+        .header-banner {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .banner-image {
+            max-width: 1200px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
         /* Стили для HR-Чеклиста */
         .task-category {
             margin-bottom: 25px;
@@ -213,7 +301,243 @@
             border-left: 3px solid var(--secondary-color);
             font-size: 14px;
         }
+             /* Полуовальные кнопки (из главной страницы) */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
         
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(230, 10, 15, 0.3);
+        }
+        
+        .btn.secondary {
+            background: #0088cc;
+        }
+        
+        .btn.secondary:hover {
+            background: #0077b3;
+            box-shadow: 0 4px 8px rgba(0, 136, 204, 0.3);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+        
+        .nav-container {
+            border-top: 1px solid var(--gray-40);
+            padding-top: 15px;
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav-item {
+            position: relative;
+            cursor: pointer;
+            padding: 8px 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gray-90);
+            transition: var(--transition);
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .nav-item:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-item.active, 
+        .nav-item:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        .has-submenu::after {
+            content: '▼';
+            font-size: 10px;
+            margin-left: 5px;
+            color: var(--gray-80);
+        }
+        
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 260px;
+            box-shadow: 0 5px 20px var(--black-20);
+            border-radius: var(--border-radius);
+            z-index: 1000;
+            border: 1px solid var(--gray-40);
+            padding: 10px 0;
+            margin-top: 5px;
+        }
+        
+        .submenu.active {
+            display: block;
+        }
+        
+        .has-submenu:hover .submenu {
+            display: block;
+        }
+        
+        .submenu-item {
+            display: block;
+            padding: 12px 20px;
+            color: var(--gray-90);
+            border-bottom: 1px solid var(--gray-40);
+            transition: var(--transition);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        
+        .submenu-item:hover {
+            background: var(--gray-20);
+            color: var(--primary-color);
+            padding-left: 25px;
+        }
+        
+        .submenu-item:last-child {
+            border-bottom: none;
+        }
+        
+            /* Баннер-ссылка */
+        .banner-link {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+            margin: 20px 0;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(230, 10, 15, 0.3);
+            transition: var(--transition);
+        }
+        
+        .banner-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(230, 10, 15, 0.4);
+        }
+        
+        /* Информация о франшизном отделе (из главной страницы) */
+        .franchise-contacts {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin: 20px 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .franchise-contacts h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        /* Основной контент (из главной страницы) */
+        .main-content {
+            padding: 40px 0;
+        }
+        
+        /* Подвал сайта (из главной страницы) */
+        footer {
+            background: white;
+            color: var(--gray-90);
+            padding: 50px 0 30px 0;
+            border-top: 1px solid var(--gray-40);
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 15px;
+        }
+        
+        .footer-title {
+            color: var(--primary-color);
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--gray-90);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: var(--gray-80);
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 30px;
+            border-top: 1px solid var(--gray-40);
+        }
         /* Стили для Ипотечного калькулятора */
         .calculator-container {
             background: var(--gray-20);
@@ -306,6 +630,64 @@
     </style>
 </head>
 <body>
+ <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <!-- Верхняя строка с логотипом и цитатами -->
+            <div class="top-row">
+                <div class="logo-section">
+                    <a href="index.html" class="logo-link">
+                        <img src="https://i.postimg.cc/sQN2Zcy7/logo.png" alt="Домиан" class="logo-img">
+                    </a>
+                    <div class="logo-subtitle">СЕТЬ АГЕНТСТВ НЕДВИЖИМОСТИ</div>
+                </div>
+                
+                <div class="quotes-bar">
+                    <div class="quote-text">Ваш успех определяется вашей настойчивостью</div>
+                </div>
+            </div>
+            
+            <!-- Баннер -->
+            <div class="header-banner">
+                <img src="https://radika1.link/2025/11/20/SNIMOK-EKRANA-2025-11-19-161849986cf332596f851b.png" alt="Баннер" class="banner-image">
+            </div>
+            </div>
+            <!-- Навигация -->
+            <div class="nav-container">
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-item">Главная</a>
+                    <a href="instructions.html" class="nav-item">Инструкции</a>
+                    <div class="nav-item has-submenu active">
+                        Франшизная папка
+                        <div class="submenu">
+                            <a href="business-system.html" class="submenu-item">Бизнес-система</a>
+                            <a href="business-processes.html" class="submenu-item">Бизнес процессы</a>
+                            <a href="office-organization.html" class="submenu-item">Организация офиса</a>
+                            <a href="agents.html" class="submenu-item">Агенту</a>
+                        </div>
+                    </div>
+                    <a href="calculators.html" class="nav-item">Калькуляторы</a>
+                    <a href="training.html" class="nav-item">Обучение</a>
+                    <a href="services.html" class="nav-item">Полезные сервисы</a>
+                    <a href="business.html" class="nav-item">Бизнес план/Окупаемость</a>
+                </nav>
+            </div>
+        </div>
+    </header>   
+      <!-- Основной контент -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Баннер-ссылка -->
+            <a href="franchise-folder.html" class="banner-link">
+                ФРАНШИЗНАЯ ПАПКА - ПОЛНЫЙ ДОСТУП
+            </a>
+            
+            <!-- Контакты франшизного отдела -->
+            <div class="franchise-contacts">
+                <h3>Контакты франшизного отдела:</h3>
+                <p><strong>Руководитель Франшизного отдела:</strong> Андрейченко Валерий: +79185233833</p>
+                <p><strong>Ведущий специалист франшизного отдела:</strong> Егупов Алексей: +79612929866</p>
+            </div>
     <div class="container">
         <h1 class="section-title">🛠️ Полезные инструменты</h1>
         
@@ -681,5 +1063,101 @@
             calculate();
         };
     </script>
+    <!-- Подвал сайта -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="https://i.postimg.cc/sQN2Zcy7/logo.png" alt="Домиан" style="max-width: 200px; height: auto; display: block; margin-bottom: 15px;">
+                    </div>
+                    
+                    <div class="franchise-contacts" style="margin-bottom: 20px; background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px; font-size: 18px;">Контакты франшизного отдела:</h3>
+                        <p><strong>Руководитель Франшизного отдела:</strong> Андрейченко Валерий: +79185233833</p>
+                        <p><strong>Ведущий специалист франшизного отдела:</strong> Егупов Алексей: +79612929866</p>
+                    </div>
+                    
+                    <div class="social-links" style="margin-bottom: 20px;">
+                        <a href="https://vk.com/domian_ru" class="btn secondary" style="margin-right: 10px;">ВКонтакте</a>
+                        <a href="https://t.me/Domian_main" class="btn secondary">Телеграм</a>
+                    </div>
+                    
+                    <div class="copyright">
+                        <p>© ИП Орлов П.В. АН «ДОМИАН» 2008-2025. Все права защищены.</p>
+                        <p>При использовании материалов ссылка на источник обязательна.</p>
+                    </div>
+                </div>
+  </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">НАВИГАЦИЯ</h3>
+                    <div class="footer-links">
+                        <a href="index.html">Главная</a>
+                        <a href="instructions.html">Инструкции</a>
+                        <a href="franchise-folder.html">Франшизная папка</a>
+                        <a href="calculators.html">Калькуляторы</a>
+                        <a href="training.html">Обучение</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ========== СИСТЕМА ВКЛАДОК ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            // Система вкладок
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.calculator-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Убираем активный класс у всех кнопок и контента
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Добавляем активный класс к текущей кнопке и контенту
+                    button.classList.add('active');
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Инициализация калькулятора вознаграждений
+            initRewardCalculator();
+        });
+        
+        // Мобильное меню (из главной страницы)
+        document.addEventListener('DOMContentLoaded', function() {
+            const submenuItems = document.querySelectorAll('.has-submenu');
+            
+            submenuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const submenu = this.querySelector('.submenu');
+                        if (submenu) {
+                            submenu.classList.toggle('active');
+                            this.classList.toggle('active');
+                        }
+                    }
+                });
+            });
+            
+            // Закрытие меню при клике вне его
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    submenuItems.forEach(item => {
+                        if (!item.contains(e.target)) {
+                            const submenu = item.querySelector('.submenu');
+                            if (submenu) {
+                                submenu.classList.remove('active');
+                                item.classList.remove('active');
+                            }
+                        }
+                    });
+                }
+            });
+        });
 </body>
 </html>
