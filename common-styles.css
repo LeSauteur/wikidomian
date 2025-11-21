@@ -1,4 +1,6 @@
 /* common-styles.css - общие стили для всех страниц */
+
+/* :root переменные для цветов */
 :root {
     --primary-color: rgb(230, 10, 15);
     --primary-dark: #c00a0f;
@@ -19,12 +21,14 @@
     --transition: all 0.3s ease;
 }
 
+/* Сброс стилей */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Общие стили */
 body {
     font-family: 'Open Sans', Arial, sans-serif;
     color: var(--gray-90);
@@ -39,7 +43,11 @@ body {
     padding: 0 20px;
 }
 
-/* Стили шапки */
+img {
+    max-width: 100%;
+}
+
+/* Шапка сайта */
 .header {
     background-color: white;
     border-bottom: 1px solid var(--gray-40);
@@ -65,19 +73,12 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
-    flex-wrap: wrap;
 }
 
 .logo-section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-}
-
-.logo-link {
-    text-decoration: none;
-    display: inline-block;
-    margin-bottom: 5px;
 }
 
 .logo-img {
@@ -136,36 +137,6 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Контакты */
-.contacts {
-    text-align: right;
-}
-
-.phone {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-decoration: none;
-    display: block;
-    margin-bottom: 5px;
-    transition: var(--transition);
-}
-
-.phone:hover {
-    color: var(--primary-dark);
-}
-
-.email {
-    font-size: 14px;
-    color: var(--gray-80);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.email:hover {
-    color: var(--primary-color);
-}
-
 /* Полуовальные кнопки */
 .btn {
     display: inline-block;
@@ -200,10 +171,8 @@ body {
 .social-links {
     display: flex;
     gap: 10px;
-    margin-left: 20px;
 }
 
-/* Навигация */
 .nav-container {
     border-top: 1px solid var(--gray-40);
     padding-top: 15px;
@@ -340,89 +309,7 @@ body {
     padding: 40px 0;
 }
 
-.welcome-banner {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #c00a0f 100%);
-    color: white;
-    padding: 60px 30px;
-    text-align: center;
-    border-radius: var(--border-radius);
-    margin-bottom: 40px;
-    box-shadow: 0 10px 30px rgba(230, 10, 15, 0.3);
-}
-
-.welcome-title {
-    font-size: 42px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.welcome-text {
-    font-size: 20px;
-    margin-bottom: 30px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.7;
-}
-
-.quick-access {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 30px;
-}
-
-.quick-btn {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    min-width: 180px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.quick-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-3px);
-}
-
-.section {
-    background: white;
-    border-radius: var(--border-radius);
-    padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: var(--shadow);
-}
-
-.section-title {
-    color: var(--primary-color);
-    font-size: 28px;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--gray-40);
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 60px;
-    height: 2px;
-    background: var(--primary-color);
-}
-
-/* Календарь */
-.calendar-container {
-    height: 600px;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: 0 5px 15px var(--black-20);
-    margin: 20px 0;
-}
-
-/* Стили подвала */
+/* Подвал сайта */
 footer {
     background: white;
     color: var(--gray-90);
@@ -489,12 +376,33 @@ footer {
 
 /* Адаптивность */
 @media (max-width: 992px) {
-    .welcome-title {
-        font-size: 36px;
-    }
-    
     .footer-content {
         flex-direction: column;
+    }
+    
+    .top-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .quotes-bar {
+        margin: 0;
+        order: 2;
+        max-width: 100%;
+    }
+    
+    .logo-section {
+        order: 1;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .header-banner {
+        order: 3;
+    }
+    
+    .quote-text {
+        font-size: 14px;
     }
 }
 
@@ -502,16 +410,6 @@ footer {
     .top-row {
         flex-direction: column;
         text-align: center;
-    }
-    
-    .quotes-bar {
-        margin: 15px 0;
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .contacts {
-        margin: 15px 0;
     }
     
     .social-links {
@@ -550,31 +448,13 @@ footer {
         margin-left: 20px;
     }
     
-    .welcome-title {
-        font-size: 28px;
-    }
-    
-    .welcome-text {
-        font-size: 16px;
-    }
-    
-    .quick-access {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .btn {
-        width: 100%;
-        max-width: 300px;
-    }
-    
-    .calendar-container {
-        height: 400px;
-    }
-    
     .banner-link {
         font-size: 20px;
         padding: 15px 0;
+    }
+    
+    .banner-image {
+        max-width: 100%;
     }
 }
 
@@ -583,15 +463,11 @@ footer {
         width: 150px;
     }
     
-    .welcome-banner {
-        padding: 40px 20px;
+    .quote-text {
+        font-size: 12px;
     }
     
-    .section {
-        padding: 20px;
-    }
-    
-    .calendar-container {
-        height: 350px;
+    .banner-image {
+        max-height: 80px;
     }
 }
