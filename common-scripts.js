@@ -1,7 +1,14 @@
+// common-scripts.js - общие скрипты для всех страниц
+
 // Функция для загрузки HTML компонентов
 function loadComponent(id, file) {
     fetch(file)
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
         .then(data => {
             document.getElementById(id).innerHTML = data;
             // После загрузки компонента, инициализируем необходимые скрипты
@@ -9,7 +16,11 @@ function loadComponent(id, file) {
                 initializeHeader();
             }
         })
-        .catch(error => console.error('Error loading component:', error));
+        .catch(error => {
+            console.error('Error loading component:', error);
+            // Если компонент не загрузился, показываем сообщение
+            document.getElementById(id).innerHTML = '<div style="padding: 20px; text-align: center; color: red;">Ошибка загрузки компонента</div>';
+        });
 }
 
 // Инициализация шапки
@@ -56,7 +67,12 @@ function initializeHeader() {
         "Ваше время ограничено, не тратьте его, живя чужой жизнью",
         "Инновации отличают лидера от догоняющего",
         "Самый большой риск — не рисковать вообще",
-        "Мечты не работают, пока не работаешь ты"
+        "Мечты не работают, пока не работаешь ты",
+        "Успех — это 10% вдохновения и 90% пота",
+        "Каждая сложная ситуация содержит в себе возможности",
+        "Ваша сеть контактов — это ваш чистый капитал",
+        "Лучшее время посадить дерево было 20 лет назад. Следующий лучший момент — сейчас",
+        "Качество — это не случайность, это результат умственных усилий"
     ];
 
     function rotateQuotes() {
@@ -68,6 +84,8 @@ function initializeHeader() {
         
         setInterval(() => {
             currentIndex = (currentIndex + 1) % businessQuotes.length;
+            
+            // Анимация смены
             quoteElement.style.opacity = '0';
             quoteElement.style.transform = 'translateY(-10px)';
             
@@ -76,7 +94,8 @@ function initializeHeader() {
                 quoteElement.style.opacity = '1';
                 quoteElement.style.transform = 'translateY(0)';
             }, 300);
-        }, 5000);
+            
+        }, 5000); // 5 секунд
     }
     
     rotateQuotes();
@@ -84,6 +103,12 @@ function initializeHeader() {
 
 // Загрузка всех компонентов при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
-    loadComponent('header-container', 'header.html');
-    loadComponent('footer-container', 'footer.html');
+    // Проверяем, существуют ли контейнеры перед загрузкой
+    if (document.getElementById('header-container')) {
+        loadComponent('header-container', 'header.html');
+    }
+    
+    if (document.getElementById('footer-container')) {
+        loadComponent('footer-container', 'footer.html');
+    }
 });
