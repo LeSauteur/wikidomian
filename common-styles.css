@@ -471,3 +471,153 @@ footer {
         max-height: 80px;
     }
 }
+/* ФИКСЫ ДЛЯ ИСПРАВЛЕНИЯ КОНФЛИКТОВ СТИЛЕЙ */
+
+/* 1. Фикс красной полосы - делаем её абсолютно предсказуемой */
+.header::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 3px !important;
+    background: var(--primary-color) !important;
+    z-index: 1001 !important;
+}
+
+/* 2. Фикс логотипа - предотвращаем падение на бок */
+.logo-section {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    position: relative !important;
+    transform: none !important;
+}
+
+.logo-img {
+    max-height: 60px !important;
+    width: auto !important;
+    display: block !important;
+    position: relative !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* 3. Фикс структуры верхней строки */
+.top-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 15px !important;
+    position: relative !important;
+    flex-wrap: nowrap !important;
+}
+
+/* 4. Фикс цитат */
+.quotes-bar {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)) !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    border-radius: var(--border-radius) !important;
+    box-shadow: 0 2px 8px rgba(230, 10, 15, 0.3) !important;
+    text-align: center !important;
+    max-width: 600px !important;
+    flex-grow: 1 !important;
+    margin: 0 20px !important;
+    position: relative !important;
+    order: 2 !important;
+}
+
+/* 5. Фикс баннера */
+.header-banner {
+    text-align: center !important;
+    margin-bottom: 15px !important;
+    position: relative !important;
+    width: 100% !important;
+}
+
+.banner-image {
+    max-width: 1200px !important;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+/* 6. Фикс навигации */
+.nav-container {
+    border-top: 1px solid var(--gray-40) !important;
+    padding-top: 15px !important;
+    position: relative !important;
+    clear: both !important;
+}
+
+.main-nav {
+    display: flex !important;
+    gap: 30px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    position: relative !important;
+}
+
+/* 7. Фикс подвала */
+footer {
+    background: white !important;
+    color: var(--gray-90) !important;
+    padding: 50px 0 30px 0 !important;
+    border-top: 1px solid var(--gray-40) !important;
+    margin-top: 40px !important;
+    position: relative !important;
+}
+
+/* 8. Атомарные фиксы для самых частых проблем */
+.header {
+    position: relative !important;
+    transform: none !important;
+}
+
+.container {
+    position: relative !important;
+}
+
+body {
+    position: relative !important;
+}
+
+/* 9. Фикс для мобильных устройств */
+@media (max-width: 768px) {
+    .top-row {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    
+    .quotes-bar {
+        margin: 15px 0 !important;
+        order: 2 !important;
+        max-width: 100% !important;
+    }
+    
+    .logo-section {
+        order: 1 !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    
+    .logo-img {
+        transform: none !important;
+    }
+}
+
+/* 10. Экстренный фикс - сбрасываем все потенциально опасные трансформации */
+*[style*="transform"]:not(.logo-img):not(.quote-text) {
+    transform: none !important;
+}
+
+.logo-section *,
+.header *,
+footer * {
+    transform: none !important;
+    transition: none !important;
+}
